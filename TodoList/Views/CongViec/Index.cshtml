@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TodoList.Models.CONGVIEC>
+
+@{
+    ViewBag.Title = "Công Việc";
+}
+
+<div class="modal-title-body">
+    <h3>@ViewBag.TitlePage</h3>
+</div>
+<div class="row">
+    <div class="col-md-1">STT</div>
+    <div class="col-md-2">Tên công việc</div>
+    <div class="col-md-2">Mô tả</div>
+    <div class="col-md-2">Ngày tạo</div>
+    <div class="col-md-2">Ngày cập nhật</div>
+    <div class="col-md-2">Trạng thái hoàn thành</div>
+    <div class="col-md-1"></div>
+    @{ int i = 1; }
+    @foreach (var item in Model)
+    {
+        <div class="col-md-1">@i</div>
+        <div class="col-md-2">@item.TENCONGVIEC</div>
+        <div class="col-md-2">@item.MOTACONGVIEC</div>
+        <div class="col-md-2">@item.NGAYTAOCONGVIEC.ToString("dd/MM/yyyy")</div>
+        <div class="col-md-2">@item.NGAYCAPNHATCONGVIEC.ToString("dd/MM/yyyy")</div>
+        <div class="col-md-2">@(item.TRANGTHAIHOANTHANH ? "Hoàn thành" : "Chưa hoàn thành")</div>
+        i++;
+        <div class="col-md-1">
+            <a  href="#" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+            <a class="ms-3" onclick="return confirm('Bạn chắc chắn xoá nó chứ ?')" href="#" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+
+        </div>
+    }
+</div>

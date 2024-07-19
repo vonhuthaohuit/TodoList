@@ -1,0 +1,488 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    zoom: 0.9;
+}
+
+
+div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #0062cc;
+    }
+
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.top-header {
+    display: flex;
+    height: auto;
+    max-width: 100%;
+}
+
+    .top-header img {
+        width: 100%;
+    }
+
+.navbar-brand img {
+    width: 55px;
+    height: 50px;
+}
+
+.navbar-brand {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    font-weight: 500;
+}
+
+
+
+.register-form-content {
+    height: 650px;
+}
+
+.buy-form-content {
+    width: 600px;
+    height: 650px;
+    background-color: #EFEFEF;
+    border-radius: 10px;
+    display: block;
+}
+
+    
+
+.buy-form form p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+
+
+.buy-form-content form input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+button[type="submit"] {
+    height: 50px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+
+
+label {
+    float: left;
+}
+
+
+.password .fa-regular.fa-eye,
+.password .fa-regular.fa-eye-slash,
+.confirm-password .fa-regular.fa-eye,
+.confirm-password .fa-regular.fa-eye-slash {
+    position: relative;
+    top: -38px;
+    left: 431px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+input[type="text"] ~ .fa-eye-slash {
+    display: none;
+}
+
+input[type="password"] ~ .fa-eye {
+    display: none;
+}
+
+.form-search-box {
+    position: relative;
+}
+
+    .form-search-box i {
+        position: absolute;
+        left: 425px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+.form-search {
+    border-radius: 10px;
+    width: 450px;
+}
+
+.menu-moblie {
+    display: block;
+}
+
+    .menu-moblie ul {
+        list-style-type: none;
+    }
+
+        .menu-moblie ul a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .menu-moblie ul li {
+            padding: 10px;
+        }
+
+.sticky-sidebar.active {
+    display: none;
+}
+
+footer {
+    display: flex;
+}
+
+.footer-group h2 {
+    text-align: left;
+}
+
+footer ul {
+    margin-left: -30px;
+    list-style-type: none;
+}
+
+.footer-group .row.ms-3 .col-md-4 ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+    .footer-group .row.ms-3 .col-md-4 ul li a:hover {
+        color: #0062ff;
+        text-decoration: none;
+    }
+
+.product-item.boxsp button,
+input {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.block-info {
+    border-radius: 15px;
+    margin: auto auto 70px;
+    max-width: 600px;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .1), 0 2px 6px 2px rgba(60, 64, 67, .15);
+    padding: 15px;
+}
+
+.block-box {
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
+}
+
+.block-customer {
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+}
+
+footer {
+    display: flex;
+}
+
+.footer-group h2 {
+    text-align: left;
+}
+
+footer ul {
+    margin-left: -30px;
+    list-style-type: none;
+}
+
+.footer-group .row.ms-3 .col-md-4 ul li a {
+    color: #000000;
+    text-decoration: none;
+}
+
+    .footer-group .row.ms-3 .col-md-4 ul li a:hover {
+        color: #0062ff;
+        text-decoration: none;
+    }
+
+.col-3 a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.col-3 li {
+    display: flex;
+}
+
+.social-icon {
+    margin-top: 20px;
+    display: flex;
+}
+
+    .social-icon li {
+        list-style: none;
+    }
+
+        .social-icon li a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+    .social-icon .fb a:hover {
+        transition: 1s;
+        background: blue;
+    }
+
+    .social-icon .tw i:hover {
+        transition: 1s;
+        color: blue;
+    }
+
+    .social-icon .in i:hover {
+        transition: 1s;
+        color: #d6249f;
+    }
+
+    .social-icon .ytb i:hover {
+        transition: 1s;
+        color: #ff0000;
+    }
+
+    .social-icon li a .fa {
+        color: #fff;
+        font-size: 20px;
+    }
+
+.info {
+    position: relative;
+}
+
+    .info li {
+        display: flex;
+        margin-bottom: 16px;
+    }
+
+        .info li span:nth-child(1) {
+            color: #000000;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .info li span {
+            color: #000000;
+        }
+
+        .info li a {
+            color: #000000;
+            text-decoration: none;
+        }
+
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    margin-top: 16px;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+.btn--primary {
+    background: #222;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    padding: 8px 24px;
+}
+
+    .btn--primary:hover {
+        background: #f00;
+    }
+
+    .btn--primary:active {
+        background: #f00;
+        box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+    }
+
+.form__field {
+    width: 90%;
+    background: #a3a3a3;
+    color: #000000;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    border: 0;
+    outline: 0;
+    padding: 8px 4px;
+}
+
+.footer-group {
+    padding: 15px;
+    background-color: #f1f2f6;
+}
+
+.thong-tin {
+    text-align: center;
+}
+
+.desktop-menu {
+    display: none;
+}
+
+.menu-moblie {
+    display: block;
+}
+
+#showcart a {
+    text-decoration: none;
+    color: black;
+}
+
+    #showcart a:hover {
+        color: red;
+    }
+
+input.invalid {
+    border: 1px solid red;
+}
+
+
+@media (min-width: 767.98px) {
+    * {
+        zoom: 1;
+    }
+
+    .img-100px {
+        width: 100px;
+        height: 100px;
+    }
+
+    .desktop-menu {
+        display: block;
+    }
+
+    .menu-moblie {
+        display: none;
+    }
+
+    .main-menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+        .main-menu > li {
+            display: inline-block;
+        }
+
+            .main-menu > li > a {
+                color: #333;
+                text-decoration: none;
+                padding: 5px 10px;
+                display: block;
+                text-align: center;
+            }
+
+                .main-menu > li > a:hover {
+                    color: red;
+                }
+
+    .menu-desktop {
+        display: block;
+    }
+
+    .menu-drop {
+        margin-left: 0px;
+        width: 200px;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .menu-moblie {
+        display: none;
+    }
+
+    footer {
+        display: block;
+    }
+
+    .col-md-4 ul {
+        list-style-type: none;
+    }
+
+    .footer-group .row.ms-3 .col-md-4 ul li a {
+        color: #000000;
+        text-decoration: none;
+    }
+
+        .footer-group .row.ms-3 .col-md-4 ul li a:hover {
+            color: #0062ff;
+            text-decoration: none;
+        }
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: red;
+}

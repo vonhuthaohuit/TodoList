@@ -1,0 +1,24 @@
+﻿@model IEnumerable<TodoList.Models.LOAICONGVIEC>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="alert alert-warning">Không có loại công việc nào được tìm thấy.</div>
+}
+else
+{
+    <div class="title-loai">
+        <h4>Loại công việc</h4>
+    </div>
+    <ul class="list-group list-group-flush">
+        @foreach (var loaiCongViec in Model)
+        {
+            <li class="list-group-item">
+                <a href="@Url.Action("ViewCongViecTheoLoai", "CongViec", new { maLoai = loaiCongViec.MALOAI })" class="loai-cong-viec">@loaiCongViec.TENLOAI</a>
+            </li>
+        }
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "CongViec")">Tất cả</a>
+        </li>
+    </ul>
+}
+
