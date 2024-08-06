@@ -114,9 +114,9 @@ namespace TodoList.Controllers
             return db.CONGVIECs.Count(e => e.ID == id) > 0;
         }
         [ResponseType(typeof(CONGVIEC))]
-        public IHttpActionResult GetCONGVIECs(string MaLoai)
+        public IHttpActionResult GetCONGVIECs(string maLoai, string maTaiKhoan)
         {
-            var cONGVIEC = db.CONGVIECs.Where(t => t.MALOAI == MaLoai).ToList();
+            var cONGVIEC = db.CONGVIECs.Where(t => t.MALOAI == maLoai && t.MATAIKHOAN == maTaiKhoan).ToList();
             if (cONGVIEC == null)
             {
                 return NotFound();
@@ -126,12 +126,62 @@ namespace TodoList.Controllers
         [ResponseType(typeof(CONGVIEC))]
         public IHttpActionResult GetCongViecTheoTaiKhoan(string maTaiKhoan)
         {
-            CONGVIEC congViec = db.CONGVIECs.Where(t => t.MATAIKHOAN == maTaiKhoan).FirstOrDefault();
+            List<CONGVIEC> congViec = db.CONGVIECs.Where(t => t.MATAIKHOAN == maTaiKhoan).ToList();
             if (congViec == null)
             {
                 return NotFound();
             }
             return Ok(congViec);
+        }
+
+        [HttpPost]
+        [Route("api/congviecs/CreateCongViec")]
+        [ResponseType(typeof(CONGVIEC))]
+        public IHttpActionResult CreateCongViec(CONGVIEC congViec)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.CONGVIECs.Add(congViec);
+            db.SaveChanges();
+
+            return Ok(congViec);
+        }
+        [HttpDelete]
+        [Route("api/congviecs/DeleteCongViec")]
+        [ResponseType(typeof(CONGVIEC))]
+        public IHttpActionResult DeleteCongViec(string maCongViec)
+        {
+            if(maCongViec == null)
+            {
+                return NotFound();
+            }
+            CONGVIEC congViec = db.CONGVIECs.Where(t => t.MACONGVIEC == maCongViec).FirstOrDefault();
+            db.CONGVIECs.Remove(congViec);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        [HttpPut]
+        [Route("api/congviecs/UpdateCongViec")]
+        [ResponseType(typeof(CONGVIEC))]
+        public IHttpActionResult UpdateCongViec(string maCongViec, CONGVIEC congViec)
+        {
+            if (maCongViec == null)
+                return BadRequest();
+            CONGVIEC congViecUpdate = db.CONGVIECs.SingleOrDefault(t => t.MACONGVIEC == maCongViec);
+            if (congViecUpdate == null)
+                return NotFound();
+
+            congViecUpdate.MOTACONGVIEC = congViec.MOTACONGVIEC;
+            congViecUpdate.NGAYCAPNHATCONGVIEC = DateTime.Today;
+            congViecUpdate.TENCONGVIEC = congViec.TENCONGVIEC;
+            congViecUpdate.TRANGTHAIHOANTHANH = congViec.TRANGTHAIHOANTHANH;
+            congViecUpdate.MALOAI = congViec.MALOAI;
+            db.SaveChanges();
+            return Ok(congViecUpdate);
         }
     }
 }

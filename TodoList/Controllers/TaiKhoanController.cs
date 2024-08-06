@@ -124,6 +124,7 @@ namespace TodoList.Controllers
                 {
                     var jsonString = response.Content.ReadAsAsync<TAIKHOAN>().Result;
                     var list = new List<TAIKHOAN> { jsonString };
+                    ViewBag.ThongTinCaNhan = db.THONGTINCANHANs.Where(t => t.MATAIKHOAN == taiKhoan.MATAIKHOAN).FirstOrDefault();
                     return View(list);
                 }
             }
@@ -136,6 +137,36 @@ namespace TodoList.Controllers
             Session.Clear();
             return RedirectToAction("Index", "TaiKhoan");
         }
+        [HttpPost]
+        public ActionResult UpdateThongTinCaNhan(THONGTINCANHAN tt)
+        {
+            if (Session["tenDangNhap"] == null)
+                return RedirectToAction("Index");
+
+            string tenDangNhap = Session["tenDangNhap"].ToString();
+            var taiKhoan = db.TAIKHOANs.FirstOrDefault(t => t.TENTAIKHOAN == tenDangNhap);
+
+            if (taiKhoan == null)
+                return RedirectToAction("Index");
+
+            string maTaiKhoan = taiKhoan.MATAIKHOAN;
+            THONGTINCANHAN thongTinCaNhanUpdate = db.THONGTINCANHANs.FirstOrDefault(t => t.MATAIKHOAN == maTaiKhoan);
+
+            if (thongTinCaNhanUpdate == null)
+                return HttpNotFound();
+
+            thongTinCaNhanUpdate.HOTEN = tt.HOTEN;
+            thongTinCaNhanUpdate.NGAYSINH = tt.NGAYSINH;
+            thongTinCaNhanUpdate.SDT = tt.SDT;
+            thongTinCaNhanUpdate.CMND = tt.CMND;
+
+
+            db.SaveChanges();
+
+            ViewBag.ThongTinCaNhan = db.THONGTINCANHANs.Where(t => t.MATAIKHOAN == taiKhoan.MATAIKHOAN).FirstOrDefault();
+            return View("XemThongTin");
+        }
+
 
     }
 }

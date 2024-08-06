@@ -175,7 +175,7 @@ form .field input:focus::placeholder {
         }
 
 .wrapper form .btn {
-    height: 50px;
+    height: 60px;
     width: 100%;
     border-radius: 5px;
     position: relative;
@@ -210,5 +210,11 @@ form .field input:focus::placeholder {
     font-size: 20px;
     font-weight: 500;
     cursor: pointer;
-    top: -20px;
+}
+.input-login-register {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }

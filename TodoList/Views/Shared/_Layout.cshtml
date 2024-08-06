@@ -16,11 +16,11 @@
         <header>
             <div class="row">
                 <div class="col-md-1 mt-4">
-                    <div class="logo main-menu"><img src="~/image/logo.jpg" class="img-fluid"></div>
+                    <div class="logo main-menu"><a href="@Url.Action("Index", "CongViec")"><img src="~/image/logo.jpg" class="img-fluid"></a> </div>
                 </div>
                 <div class="col-md-4 mt-4">
                     <ul class="main-menu">
-                        <li><a href="#"><i class="fa fa-home"></i> Trang chủ</a></li>
+                        <li><a href="@Url.Action("Index", "CongViec")"><i class="fa fa-home"></i> Trang chủ</a></li>
                         <li>
                             <a href="@Url.Action("Index", "CongViec")">
                                 <i class="fa fa-tasks"></i> Công Việc
@@ -29,7 +29,7 @@
                         <li><a href="#"><i class="fa fa-info-circle"></i> Giới thiệu</a></li>
                     </ul>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 mt-3">
                     <form>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Bạn tìm gì dọ...."
@@ -54,7 +54,7 @@
                             {
 
                                 string tenDangNhap = Session["tenDangNhap"] as string;
-                                
+
                                 <div class="dropdown">
                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-user"></i> Xin chào @Session["tenDangNhap"] <span class="caret"></span>
@@ -87,6 +87,15 @@
                     @Html.Action("GetLoaiCongViecPartial", "LoaiCongViec")
                 </div>
                 <div class="col-md-9">
+                    <div class="create-item">
+                        <div class="create-loai-cong-viec">
+                            <a href="@Url.Action("ThemLoaiCongViec", "LoaiCongViec")">
+                                <i class="fa fa-plus"></i> Thêm loại công việc
+                            </a>
+                            <a href="@Url.Action("ThemCongViec", "CongViec")" style="margin-left: 0;"><i class="fa fa-plus"></i> Thêm công việc</a>
+                        </div>
+                    </div>
+
                     @RenderBody()
                 </div>
             </div>
@@ -94,7 +103,6 @@
         </main>
 
         <footer>
-
         </footer>
     </div>
 
@@ -104,5 +112,21 @@
     <script src="@popperJsUrl"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
             crossorigin="anonymous"></script>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="successMessage" style="display:none;">@TempData["SuccessMessage"]</div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var message = document.getElementById('successMessage').innerText;
+        if (message) {
+            alert(message);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '@Url.Action("ClearTempData", "Home")', true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send();
+        }
+        });
+        </script>
+}
 </body>
 </html>

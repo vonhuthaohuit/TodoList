@@ -24,7 +24,14 @@ namespace TodoList
                 url: "{controller}/{action}/{tenDangNhap}",
                 defaults: new { controller = "TaiKhoan", action = "XemThongTin", tenDangNhap = UrlParameter.Optional }
             );
-            
+            routes.MapRoute(
+                name: "CreateLoaiCongViec",
+                url: "{controller}/{action}/{maTaiKhoan}",
+                defaults: new { controller = "LOAICONGVIECs", action = "CreateLoaiCongViec", maTaiKhoan = UrlParameter.Optional }
+            );
+
+
+
 
 
         }

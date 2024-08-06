@@ -69,7 +69,7 @@ namespace TodoList.Controllers
             return db.TAIKHOANs.Count(e => e.ID == id) > 0;
         }
         [HttpGet]
-        [Route("Login")]
+        [Route("api/TAIKHOANs/Login")]
         [ResponseType(typeof(TAIKHOAN))]
         public async Task<IHttpActionResult> Login(string tenDangNhapLogin, string matKhauLogin)
         {
@@ -91,7 +91,11 @@ namespace TodoList.Controllers
         private async Task<TAIKHOAN> KiemTraDangNhap(string tenDangNhap, string matKhau)
         {
             string tk = db.TAIKHOANs.Where(t => t.TENTAIKHOAN == tenDangNhap).ToString();
-            string mk = db.TAIKHOANs.Where(t => t.MATKHAU == matKhau).ToString();
+            if (!db.TAIKHOANs.FirstOrDefault().MATKHAU.Equals(matKhau))
+            {
+                return null;
+            }
+            string mk = db.TAIKHOANs.Where(t => t.MATKHAU == matKhau).FirstOrDefault().MATKHAU;
             if (tk != null && mk != null)
             {
                 return new TAIKHOAN { TENTAIKHOAN = tenDangNhap };

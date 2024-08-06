@@ -1,0 +1,53 @@
+﻿@model TodoList.Models.CONGVIEC
+
+@{
+    ViewBag.Title = "ThemCongViec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm công việc</h2>
+<style>
+    .input-text-fix {
+        width: 50%;
+    }
+</style>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.TENCONGVIEC, "Tên công việc", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="TENCONGVIEC" id="TENCONGVIEC" class="input-text-fix" />
+            @Html.ValidationMessageFor(model => model.TENCONGVIEC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        @Html.LabelFor(model => model.MOTACONGVIEC, "Mô tả công việc", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.MOTACONGVIEC, new { @class = "form-control", rows = 4 })
+            @Html.ValidationMessageFor(model => model.MOTACONGVIEC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MALOAI, "Loại công việc", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.MALOAI, new SelectList(ViewBag.MALOAIList, "Value", "Text"), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MALOAI, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-success">Tạo công việc</button>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Về trang chủ", "Index", "CongViec")
+</div>

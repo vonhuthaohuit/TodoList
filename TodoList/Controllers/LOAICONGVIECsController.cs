@@ -33,7 +33,7 @@ namespace TodoList.Controllers
             }
 
             return Ok(lOAICONGVIEC);
-        }
+        }  
 
         // PUT: api/LOAICONGVIECs/5
         [ResponseType(typeof(void))]
@@ -113,6 +113,65 @@ namespace TodoList.Controllers
         private bool LOAICONGVIECExists(int id)
         {
             return db.LOAICONGVIECs.Count(e => e.ID == id) > 0;
+        }
+
+        [ResponseType(typeof(LOAICONGVIEC))]
+        public IHttpActionResult GetLOAICONGVIEC(string maTaiKhoan)
+        {
+            List<LOAICONGVIEC> loaicongviecs = db.LOAICONGVIECs.Where(t => t.MATAIKHOAN == maTaiKhoan).ToList();
+            if (loaicongviecs == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(loaicongviecs);
+        }
+        [HttpPost]
+        [Route("api/loaicongviecs/CreateLoaiCongViec")]
+        [ResponseType(typeof(LOAICONGVIEC))]
+        public IHttpActionResult CreateLoaiCongViec(LOAICONGVIEC lOAICONGVIEC)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.LOAICONGVIECs.Add(lOAICONGVIEC);
+            db.SaveChanges();
+
+            return Ok(lOAICONGVIEC);
+        }
+        [HttpDelete]
+        [Route("api/loaicongviecs/DeleteLoaiCongViec")]
+        [ResponseType(typeof(LOAICONGVIEC))]
+        public IHttpActionResult DeleteLoaiCongViec(string maLoaiCongViec)
+        {
+            if (maLoaiCongViec == null)
+            {
+                return NotFound();
+            }
+            LOAICONGVIEC loaiCongViec = db.LOAICONGVIECs.Where(t => t.MALOAI == maLoaiCongViec).FirstOrDefault();
+            db.LOAICONGVIECs.Remove(loaiCongViec);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        [HttpPut]
+        [Route("api/loaicongviecs/UpdateLoaiCongViec")]
+        [ResponseType(typeof(LOAICONGVIEC))]
+        public IHttpActionResult UpdateLoaiCongViec(string maLoaiCongViec, LOAICONGVIEC loaiCongViec)
+        {
+            if (loaiCongViec == null)
+                return BadRequest();
+            LOAICONGVIEC loaiCongViecUpdate = db.LOAICONGVIECs.SingleOrDefault(t => t.MALOAI == maLoaiCongViec);
+            if (loaiCongViecUpdate == null)
+                return NotFound();
+
+            loaiCongViecUpdate.MOTALOAI = loaiCongViec.MOTALOAI;
+            loaiCongViecUpdate.NGAYCAPNHATLOAI = DateTime.Today;
+            loaiCongViecUpdate.TENLOAI = loaiCongViec.TENLOAI;
+            db.SaveChanges();
+            return Ok(loaiCongViecUpdate);
         }
     }
 }

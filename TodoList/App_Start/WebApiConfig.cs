@@ -17,9 +17,9 @@ namespace TodoList
 
 
             config.Routes.MapHttpRoute(
-            name: "DefaultApi1",
-            routeTemplate: "api/{controller}/{maTaiKhoan}",
-            defaults: new { maTaiKhoan = RouteParameter.Optional }
+                name: "DefaultApi1",
+                routeTemplate: "api/{controller}/{maTaiKhoan}",
+                defaults: new { maTaiKhoan = RouteParameter.Optional }
             );
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

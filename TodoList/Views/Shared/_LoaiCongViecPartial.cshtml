@@ -1,20 +1,37 @@
 ﻿@model IEnumerable<TodoList.Models.LOAICONGVIEC>
 
+
 @if (Model == null || !Model.Any())
 {
     <div class="alert alert-warning">Không có loại công việc nào được tìm thấy.</div>
 }
 else
 {
+    <style>
+        .parent-container {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .loai-cong-viec{
+            text-align: left;
+            width: 80%;
+        }
+    </style>
     <div class="title-loai">
         <h4>Loại công việc</h4>
     </div>
     <ul class="list-group list-group-flush">
         @foreach (var loaiCongViec in Model)
         {
-            <li class="list-group-item">
+        <li class="list-group-item">
+            <div class="parent-container">
                 <a href="@Url.Action("ViewCongViecTheoLoai", "CongViec", new { maLoai = loaiCongViec.MALOAI })" class="loai-cong-viec">@loaiCongViec.TENLOAI</a>
-            </li>
+                <div class="right-CRUD">
+                    <a href="@Url.Action("UpdateLoaiCongViec", "LoaiCongViec", new { maLoaiCongViec = loaiCongViec.MALOAI })" ui-toggle-class=""><i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                    <a class="ms-3" onclick="return confirm('Bạn chắc chắn xoá nó chứ ?')" href="@Url.Action("DeleteLoaiCongViec", "LoaiCongViec", new { maLoaiCongViec = loaiCongViec.MALOAI })" ui-toggle-class=""><i class="fa fa-times text-danger text"></i></a>
+                </div>
+            </div>
+        </li>
         }
         <li class="list-group-item">
             <a href="@Url.Action("Index", "CongViec")">Tất cả</a>

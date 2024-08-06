@@ -18,7 +18,6 @@ namespace TodoList.Models
 
         public string TENCONGVIEC { get; set; }
 
-        [Column(TypeName = "text")]
         public string MOTACONGVIEC { get; set; }
 
         public bool TRANGTHAIHOANTHANH { get; set; }

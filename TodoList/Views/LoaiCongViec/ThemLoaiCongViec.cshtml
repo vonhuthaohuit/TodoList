@@ -1,0 +1,41 @@
+﻿@model TodoList.Models.LOAICONGVIEC
+
+@{
+    ViewBag.Title = "ThemLoaiCongViec";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thêm loại công việc</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENLOAI, "Tên loại" ,htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TENLOAI, new { htmlAttributes = new { @class = "input-text-fix" } })
+                @Html.ValidationMessageFor(model => model.TENLOAI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            @Html.LabelFor(model => model.MOTALOAI, "Mô tả loại" ,htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.MOTALOAI, new { htmlAttributes = new { @class = "input-text-fix" } })
+                @Html.ValidationMessageFor(model => model.MOTALOAI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-success">Tạo loại</button>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Quay về", "Index")
+</div>

@@ -14,5 +14,11 @@ namespace TodoList.Controllers
 
             return View();
         }
+        [HttpPost]
+        public ActionResult ClearTempData()
+        {
+            return new HttpStatusCodeResult(200);
+        }
+
     }
 }

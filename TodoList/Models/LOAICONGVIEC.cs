@@ -18,13 +18,15 @@ namespace TodoList.Models
 
         public string TENLOAI { get; set; }
 
-        [Column(TypeName = "text")]
         public string MOTALOAI { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NGAYTAOLOAI { get; set; }
+        public DateTime NGAYTAOLOAI { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NGAYCAPNHATLOAI { get; set; }
+        public DateTime NGAYCAPNHATLOAI { get; set; }
+
+        [StringLength(50)]
+        public string MATAIKHOAN { get; set; }
     }
 }

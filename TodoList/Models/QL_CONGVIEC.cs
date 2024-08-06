@@ -14,6 +14,7 @@ namespace TodoList.Models
 
         public virtual DbSet<CONGVIEC> CONGVIECs { get; set; }
         public virtual DbSet<LOAICONGVIEC> LOAICONGVIECs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
         public virtual DbSet<THONGTINCANHAN> THONGTINCANHANs { get; set; }
 
@@ -21,10 +22,6 @@ namespace TodoList.Models
         {
             modelBuilder.Entity<CONGVIEC>()
                 .Property(e => e.MACONGVIEC)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CONGVIEC>()
-                .Property(e => e.MOTACONGVIEC)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CONGVIEC>()
@@ -40,7 +37,7 @@ namespace TodoList.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<LOAICONGVIEC>()
-                .Property(e => e.MOTALOAI)
+                .Property(e => e.MATAIKHOAN)
                 .IsUnicode(false);
 
             modelBuilder.Entity<TAIKHOAN>()
